@@ -1,13 +1,13 @@
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
-import { schema } from './graphql';
+import { resolvers, typeDefs } from './graphql';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
-const server = new ApolloServer({ schema });
+const server = new ApolloServer({ typeDefs, resolvers });
 const startApollo = async () => {
   try {
     await server.start();
